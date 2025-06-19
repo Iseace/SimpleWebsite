@@ -57,7 +57,6 @@ export default function landingPage() {
             alt='LandingPageImage'
             priority
           />
-          <T variant='h6'>hoa</T>
         </div>
       </div>
     </Container >

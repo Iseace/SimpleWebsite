@@ -51,8 +51,8 @@ const Sidebar = () => {
         <Link href="/search" passHref>
           <Button className={cls.button}>Search</Button>
         </Link>
-        <Link href="/settings" passHref>
-          <Button className={cls.button}>Setting</Button>
+        <Link href="/events" passHref>
+          <Button className={cls.button}>Events</Button>
         </Link>
         <Link href="/services" passHref>
           <Button className={cls.button}>Services</Button>
