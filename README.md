@@ -1,18 +1,18 @@
 # SimpleWebsite
 
-This is a [Next.js](https://nextjs.org) project 
+This is a just a simple [Next.js](https://nextjs.org) project built with Material UI (MUI) and designed around a coffee theme.
+
+## Features
+
+-  Coffee ordering form with interactive elements and event handling
+-  Search bar to filter coffee types (API-powered)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm i
-
+npm install
 npm run dev
-
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-the search bar is in the search page on the sidebar
+That's it . _. 
