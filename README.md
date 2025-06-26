@@ -6,6 +6,7 @@ This is a just a simple [Next.js](https://nextjs.org) project built with Materia
 
 -  Coffee ordering form with interactive elements and event handling
 -  Search bar to filter coffee types (API-powered)
+-  Simple Coffee btn component
 
 ## Getting Started
 
