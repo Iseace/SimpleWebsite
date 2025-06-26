@@ -5,10 +5,16 @@ import { Box, Button, Checkbox, FormControl, FormControlLabel, InputLabel, MenuI
 import { styled } from "@mui/material/styles";
 import { brown } from "@mui/material/colors";
 import getClassPrefixer from "@/app/utils/getClassPrefixer";
+import CoffeeBtn from '@/app/components/coffeeBtn/coffeeBtn';
 
 const displayName = 'OrderForm';
 const cls = getClassPrefixer(displayName);
 
+const PageContainer = styled('div')({
+  position: 'relative',
+  minHeight: '100vh',
+  padding: '1rem',
+});
 
 const FormContainer = styled(Box)(({ theme }) => ({
   maxWidth: 400,
@@ -42,64 +48,79 @@ export default function OrderForm() {
     setMessage(finalMessage);
   };
 
+  const handleCoffeeButtonClick = () => {
+    alert("¡Vamos por más café! ☕");
+  };
+
   return (
-    <FormContainer component="form" onSubmit={handleSubmit}>
-      <T variant="h5" gutterBottom>Pide tu café</T>
+    <PageContainer>
+      <div style={{
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem',
+        zIndex: 10
+      }}>
+        <CoffeeBtn onClick={handleCoffeeButtonClick} />
+      </div>
 
-      <TextField
-        fullWidth
-        label="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        margin="normal"
-      />
+      <FormContainer component="form" onSubmit={handleSubmit}>
+        <T variant="h5" gutterBottom>Pide tu café</T>
 
-      <FormControl fullWidth margin="normal">
-        <InputLabel>Tipo de Café</InputLabel>
-        <Select
-          value={coffeeType}
-          label="Tipo de Café"
-          onChange={(e) => setCoffeeType(e.target.value)}
-        >
-          <MenuItem value="Americano">Americano</MenuItem>
-          <MenuItem value="Latte">Latte</MenuItem>
-          <MenuItem value="Capuchino">Capuchino</MenuItem>
-          <MenuItem value="Espresso">Espresso</MenuItem>
-        </Select>
-      </FormControl>
+        <TextField
+          fullWidth
+          label="Nombre"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          margin="normal"
+        />
 
-      <FormControl component="fieldset" margin="normal">
-        <T variant="subtitle1" sx={{ color: brown[700] }}>Tamaño</T>
-        <RadioGroup
-          value={size}
-          onChange={(e) => setSize(e.target.value)}
-          style={{ color: brown[800] }}
-        >
-          <FormControlLabel value="Chico" control={<Radio />} label="Chico" />
-          <FormControlLabel value="Mediano" control={<Radio />} label="Mediano" />
-          <FormControlLabel value="Grande" control={<Radio />} label="Grande" />
-        </RadioGroup>
-      </FormControl>
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Tipo de Café</InputLabel>
+          <Select
+            value={coffeeType}
+            label="Tipo de Café"
+            onChange={(e) => setCoffeeType(e.target.value)}
+          >
+            <MenuItem value="Americano">Americano</MenuItem>
+            <MenuItem value="Latte">Latte</MenuItem>
+            <MenuItem value="Capuchino">Capuchino</MenuItem>
+            <MenuItem value="Espresso">Espresso</MenuItem>
+          </Select>
+        </FormControl>
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={sugar}
-            onChange={(e) => setSugar(e.target.checked)}
-          />
-        }
-        label="¿Agregar azúcar?"
-      />
+        <FormControl component="fieldset" margin="normal">
+          <T variant="subtitle1" sx={{ color: brown[700] }}>Tamaño</T>
+          <RadioGroup
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+            style={{ color: brown[800] }}
+          >
+            <FormControlLabel value="Chico" control={<Radio />} label="Chico" />
+            <FormControlLabel value="Mediano" control={<Radio />} label="Mediano" />
+            <FormControlLabel value="Grande" control={<Radio />} label="Grande" />
+          </RadioGroup>
+        </FormControl>
 
-      <Button className={cls.btn} type="submit" variant="contained" fullWidth>
-        Hacer pedido
-      </Button>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={sugar}
+              onChange={(e) => setSugar(e.target.checked)}
+            />
+          }
+          label="¿Agregar azúcar?"
+        />
 
-      {message && (
-        <T variant="body2" className={cls.msgStyle}>
-          {message}
-        </T>
-      )}
-    </FormContainer>
+        <Button className={cls.btn} type="submit" variant="contained" fullWidth>
+          Hacer pedido
+        </Button>
+
+        {message && (
+          <T variant="body2" className={cls.msgStyle}>
+            {message}
+          </T>
+        )}
+      </FormContainer>
+    </PageContainer>
   );
 }

@@ -5,6 +5,7 @@ import { Typography as T } from '@mui/material';
 import { styled } from "@mui/material/styles";
 import { brown } from "@mui/material/colors";
 import getClassPrefixer from "@/app/utils/getClassPrefixer";
+import CoffeeBtn from '@/app/components/coffeeBtn/coffeeBtn';
 
 const displayName = 'LandingPage';
 const cls = getClassPrefixer(displayName);
@@ -18,6 +19,7 @@ const Container = styled('div')({
   justifyContent: 'left',
   alignItems: 'center',
   minHeight: '100%',
+  position: 'relative',
 
   [`& .${cls.card}`]: {
     width: 'auto',
@@ -39,13 +41,27 @@ const Container = styled('div')({
 });
 
 export default function landingPage() {
+  const handleCoffeeButtonClick = () => {
+  };
+
   return (
     <Container>
+      <div style={{
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem',
+        zIndex: 10
+      }}>
+        <CoffeeBtn onClick={handleCoffeeButtonClick}>
+          Order Coffee
+        </CoffeeBtn>
+      </div>
+
       <div className={cls.content}>
         <div className={cls.card}>
           <T variant="h2" component="h1">Welcome to the simplest website in the UTCH BIS</T>
           <T variant="h3">Want some coffee?</T>
-          <T variant="h4">(The btns don't work btw)</T>
+          <T variant="h4">(The btns now work! 🎉)</T>
         </div>
       </div>
       <div className={cls.content}>
@@ -62,4 +78,3 @@ export default function landingPage() {
     </Container >
   );
 }
-

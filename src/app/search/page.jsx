@@ -6,6 +6,7 @@ import { brown } from "@mui/material/colors";
 import { Typography as T, InputBase } from "@mui/material";
 import getClassPrefixer from "@/app/utils/getClassPrefixer";
 import { Search } from '@mui/icons-material';
+import CoffeeBtn from '@/app/components/coffeeBtn/coffeeBtn'; // Fixed import - note the capital C in CoffeeBtn
 
 const displayName = "Navbar";
 const cls = getClassPrefixer(displayName);
@@ -15,6 +16,7 @@ const Container = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   padding: theme.spacing(2),
+  position: 'relative', // Added to make absolute positioning work within this container
 
   [`& .${cls.searchContainer}`]: {
     display: 'flex',
@@ -96,13 +98,26 @@ export default function SearchPage() {
     coffee.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleCoffeeButtonClick = () => {
+  };
+
   return (
     <Container>
-      <T variant="h4" gutterBottom>Search Page</T>
+      <div style={{
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem',
+        zIndex: 10
+      }}>
+        <CoffeeBtn onClick={handleCoffeeButtonClick} />
+      </div>
 
-      <T variant="subtitle1" sx={{ color: brown[600] }}>
-        Welcome to the coffee search page
-      </T>
+      <div>
+        <T variant="h4" gutterBottom>Search Page</T>
+        <T variant="subtitle1" sx={{ color: brown[600] }}>
+          Welcome to the coffee search page
+        </T>
+      </div>
 
       <div className={cls.searchContainer}>
         <Search />
